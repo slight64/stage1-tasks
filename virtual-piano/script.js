@@ -1,13 +1,34 @@
 const keys = document.querySelectorAll('.piano-key');
 const switchBtn = document.querySelectorAll('.btn');
+const fullScreenBtn = document.querySelector('.fullscreen');
+
+fullScreenBtn.addEventListener('click', toggleFullScreen);
+
+window.addEventListener('keydown', playNoteKey);
+
 
 keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
 keys.forEach(key => key.addEventListener('click',playClick ));
 
-window.addEventListener('keydown', playNoteKey);
 
-switchBtn.forEach(el => el.addEventListener('click', switchMode))
+switchBtn.forEach(el => el.addEventListener('click', switchMode));
+
+//Check fullscreen mode on
+function isFullScreen(e) {
+  return document.fullscreenElement
+    ||document.webkitFullScreenElement
+    ||document.mozFullScreenElement
+    ||document.msFullscreenElement;
+}
+//Toggle fullscreen mode
+function toggleFullScreen() {
+  if(isFullScreen()) {
+    document.exitFullscreen();
+  } else {
+    document.documentElement.requestFullscreen();
+  }
+}
 
 // Keyboard action
 function playNoteKey(e) {
