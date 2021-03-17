@@ -11,11 +11,10 @@ switchBtn.forEach(el => el.addEventListener('click', switchMode))
 
 // Keyboard action
 function playNoteKey(e) {
-    eventKey = e.code.slice(-1);
+    const eventKey = e.code.slice(-1); // make push keys actual to all languages and case of letters
     const key = document.querySelector(`.piano-key[data-letter="${eventKey}"]`);
     const audio = document.querySelector(`audio[data-letter="${eventKey}"]`);
     if (!audio) return;
-
     audio.currentTime = 0;
     audio.play();
     // Check for key holding
