@@ -130,7 +130,6 @@ body {
 }
 .piano-key::before,
 .piano-key::after {
-	content: attr(data-note);
 	position: absolute;
 	width: 40px;
 	height: 40px;
@@ -142,9 +141,12 @@ body {
 	left: 20px;
 	transition: 0.3s;
 }
+.piano-key.notes::before {
+	content: attr(data-note);
+}
 .piano-key::after {
-	display: none;
-	content: attr(data-letter);
+
+
 }
 .piano-key:hover::before,
 .piano-key:hover::after {
@@ -161,13 +163,10 @@ body {
 	left: 7px;
 }
 .piano-key.letter::before {
-	display: none;
+	content: attr(data-letter);
 }
 .piano-key.letter::after {
 	display: block;
-}
-.piano-key-letter::before {
-	content: attr(data-letter);
 }
 
 .piano-key-remove-mouse:active::before {
@@ -293,6 +292,7 @@ body {
 	}
 	.piano-key::before,
 	.piano-key::after {
+
 		width: 30px;
 		height: 30px;
 		font-size: 22px;
